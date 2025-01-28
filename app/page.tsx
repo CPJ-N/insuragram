@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { HeroSection } from "@/components/hero-section";
 import { 
   Heart, 
@@ -41,49 +43,51 @@ export default function Home() {
       />
       
       {/* Insurance Categories */}
-      <section className="py-20 bg-[var(--brand-light-gray)]">
+      <section className="py-20 bg-muted">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-[var(--brand-charcoal)]">
+        <h2 className="text-3xl font-bold text-center mb-12">
         Insurance Solutions
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {insuranceCategories.map((category) => (
-          <div 
-          key={category.title}
-          className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border-2 border-[var(--brand-brown)] hover:border-[var(--brand-orange)]"
-          >
-          <div className="w-14 h-14 bg-[var(--brand-light-gray)] rounded-lg mb-4 flex items-center justify-center text-[var(--brand-orange)]">
-            {category.icon}
-          </div>
-          <h3 className="text-xl font-semibold mb-2 text-[var(--brand-charcoal)]">{category.title}</h3>
-          <p className="text-[var(--brand-dark-brown)] mb-4">{category.description}</p>
-          <Link
-            href={category.link}
-            className="text-[var(--brand-orange)] font-medium hover:text-[var(--brand-brown)]"
-          >
-            Learn More →
-          </Link>
-          </div>
+          <Card key={category.title}>
+            <CardContent className="pt-6">
+              <div className="w-14 h-14 bg-muted rounded-lg mb-4 flex items-center justify-center text-primary">
+                {category.icon}
+              </div>
+              <CardHeader className="p-0">
+                <CardTitle className="text-xl mb-2">{category.title}</CardTitle>
+                <CardDescription>{category.description}</CardDescription>
+              </CardHeader>
+              <Button variant="link" asChild className="p-0 mt-4">
+                <Link href={category.link}>Learn More →</Link>
+              </Button>
+            </CardContent>
+          </Card>
         ))}
         </div>
       </div>
       </section>
 
       {/* Features Section */}
-      <section className="bg-white py-20">
+      <section className="py-20">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-[var(--brand-charcoal)]">
+        <h2 className="text-3xl font-bold text-center mb-12">
         Why Choose Us
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {features.map((feature) => (
-          <div key={feature.title} className="text-center">
-          <div className="w-16 h-16 mx-auto bg-[var(--brand-light-gray)] rounded-full flex items-center justify-center mb-4 text-[var(--brand-orange)]">
-            {feature.icon}
-          </div>
-          <h3 className="text-lg font-semibold mb-2 text-[var(--brand-charcoal)]">{feature.title}</h3>
-          <p className="text-[var(--brand-dark-brown)]">{feature.description}</p>
-          </div>
+          <Card key={feature.title} className="text-center">
+            <CardContent className="pt-6">
+              <div className="w-16 h-16 mx-auto bg-muted rounded-full flex items-center justify-center mb-4 text-primary">
+                {feature.icon}
+              </div>
+              <CardHeader className="p-0">
+                <CardTitle className="text-lg mb-2">{feature.title}</CardTitle>
+                <CardDescription>{feature.description}</CardDescription>
+              </CardHeader>
+            </CardContent>
+          </Card>
         ))}
         </div>
       </div>

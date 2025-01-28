@@ -1,0 +1,16 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Garage building -->
+  <path d="M4 28 L4 12 L16 4 L28 12 L28 28 Z" stroke="#4F46E5" stroke-width="2" />
+  
+  <!-- Garage door -->
+  <path d="M8 28 L8 16 L24 16 L24 28" stroke="#4F46E5" stroke-width="2" />
+  
+  <!-- Door lines -->
+  <path d="M8 20 L24 20" stroke="#4F46E5" stroke-width="2" />
+  <path d="M8 24 L24 24" stroke="#4F46E5" stroke-width="2" />
+  
+  <!-- Tools -->
+  <circle cx="16" cy="18" r="2" fill="#4F46E5" />
+  <path d="M12 14 L14 12" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" />
+  <path d="M18 14 L20 12" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clock face -->
+  <circle cx="16" cy="16" r="14" stroke="#4F46E5" stroke-width="2" />
+  
+  <!-- Clock hands -->
+  <path d="M16 8 L16 16 L22 16" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Lightning bolt -->
+  <path d="M20 4 L14 12 L18 12 L12 20" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Checkmark -->
+  <path d="M8 16 L12 20 L16 16" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
