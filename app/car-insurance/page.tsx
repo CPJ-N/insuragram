@@ -7,31 +7,33 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CheckCircle, Clock } from "lucide-react";
+import { CheckCircle, Clock, FileText, Zap, TagIcon, Car, Search, FileCheck } from "lucide-react";
 
 export default function CarInsurance() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Fixed button styling */}
+      {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary to-primary/80 text-white py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         <div className="container mx-auto px-6 relative">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-10 md:mb-0">
-              <span className="inline-block bg-white/10 px-4 py-1 rounded-full text-sm mb-4">
+              <span className="inline-block bg-orange-500 px-4 py-1 rounded-full text-sm mb-4 font-medium text-white">
                 Save up to 45% on your car insurance
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-black">
                 Drive with Confidence and Complete Protection
               </h1>
-              <p className="text-xl mb-8 text-white/90">
-                Comprehensive car insurance starting at ₹2,000/year with instant policy issuance
+              <p className="text-xl mb-8 text-black">
+                Comprehensive car insurance starting at{" "}
+                <span className="text-black font-bold">₹2,000/year</span>{" "}
+                with instant policy issuance
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
                   variant="secondary" 
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto bg-orange-500 text-white"
                   asChild
                 >
                   <Link href="#quote-form">Get a Quote</Link>
@@ -39,7 +41,7 @@ export default function CarInsurance() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto border-white hover:bg-blue/20 text-black"
+                  className="w-full sm:w-auto border-white hover:bg-blue/20 text-white bg-orange-500"
                   asChild
                 >
                   <Link href="#coverage">View Coverage</Link>
@@ -61,7 +63,7 @@ export default function CarInsurance() {
         </div>
       </section>
 
-      {/* Quick Benefits Section - New */}
+      {/* Quick Benefits Section - Enhanced with more benefits */}
       <section className="py-12 bg-muted/50">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -75,6 +77,34 @@ export default function CarInsurance() {
                   <p className="text-sm text-muted-foreground">{benefit.description}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Added: Insurance Process Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Get your car insured in three simple steps
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {process.map((step, index) => (
+              <Card key={step.title} className="relative">
+                <CardContent className="pt-6">
+                  <div className="absolute top-4 right-4 text-4xl font-bold text-primary/10">
+                    {index + 1}
+                  </div>
+                  <div className="w-14 h-14 bg-primary/10 rounded-lg mb-4 flex items-center justify-center">
+                    <step.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <CardHeader className="p-0">
+                    <CardTitle className="text-xl mb-2">{step.title}</CardTitle>
+                    <CardDescription>{step.description}</CardDescription>
+                  </CardHeader>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -107,6 +137,46 @@ export default function CarInsurance() {
               </TabsContent>
             ))}
           </Tabs>
+        </div>
+      </section>
+
+      {/* Added: Premium Calculator Section */}
+      <section className="py-20 bg-primary/5">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-4">Car Insurance Premium Calculator</h2>
+            <p className="text-center text-muted-foreground mb-12">
+              Get an instant estimate of your car insurance premium
+            </p>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {calculatorFields.map((field) => (
+                    <div key={field.name} className="space-y-2">
+                      <Label htmlFor={field.name}>{field.label}</Label>
+                      {field.type === 'select' ? (
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder={field.placeholder} />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {field.options?.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      ) : (
+                        <Input id={field.name} type={field.type} placeholder={field.placeholder} />
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <Button className="w-full mt-6">Calculate Premium</Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -166,6 +236,26 @@ export default function CarInsurance() {
                 </form>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Added: FAQ Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Everything you need to know about car insurance
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {faqs.map((faq) => (
+              <Card key={faq.question}>
+                <CardHeader>
+                  <CardTitle className="text-lg">{faq.question}</CardTitle>
+                  <CardDescription>{faq.answer}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -264,7 +354,79 @@ const quickBenefits = [
     description: "Get insured in 5 minutes",
     icon: Clock
   },
-  // ... add more quick benefits
+  {
+    title: "Zero Paperwork",
+    description: "100% digital process",
+    icon: FileText
+  },
+  {
+    title: "Instant Claims",
+    description: "24-hour claim settlement",
+    icon: Zap
+  },
+  {
+    title: "Best Prices",
+    description: "Compare and save up to 45%",
+    icon: TagIcon
+  }
+];
+
+const process = [
+  {
+    title: "Share Car Details",
+    description: "Enter your car make, model, and registration year",
+    icon: Car
+  },
+  {
+    title: "Compare Quotes",
+    description: "Get instant quotes from top insurers",
+    icon: Search
+  },
+  {
+    title: "Buy Policy",
+    description: "Make payment and get instant policy document",
+    icon: FileCheck
+  }
+];
+
+const calculatorFields = [
+  {
+    name: "carValue",
+    label: "Car Value (IDV)",
+    type: "number",
+    placeholder: "Enter car value"
+  },
+  {
+    name: "manufacturingYear",
+    label: "Manufacturing Year",
+    type: "select",
+    placeholder: "Select year",
+    options: Array.from({ length: 15 }, (_, i) => ({
+      value: `${new Date().getFullYear() - i}`,
+      label: `${new Date().getFullYear() - i}`
+    }))
+  }
+  // Add more calculator fields...
+];
+
+const faqs = [
+  {
+    question: "What is covered under comprehensive car insurance?",
+    answer: "Comprehensive coverage includes damage to your car, third-party liability, personal accident cover, and additional protection against natural disasters and theft."
+  },
+  {
+    question: "How is car insurance premium calculated?",
+    answer: "Premium is calculated based on factors like car value (IDV), age, make & model, location, and coverage type chosen."
+  },
+  {
+    question: "What is No Claim Bonus (NCB)?",
+    answer: "NCB is a discount on premium ranging from 20% to 50% for claim-free years, rewarding safe driving."
+  },
+  {
+    question: "Is third-party insurance mandatory?",
+    answer: "Yes, third-party insurance is legally mandatory for all vehicles in India as per the Motor Vehicles Act."
+  }
+  // Add more FAQs...
 ];
 
 const coverageDetails = {
