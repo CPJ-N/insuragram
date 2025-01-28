@@ -5,7 +5,7 @@ export default function LifeInsurance() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <section className="bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] text-white py-16">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-10 md:mb-0">
@@ -17,7 +17,7 @@ export default function LifeInsurance() {
               </p>
               <Link 
                 href="#quote-form"
-                className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition"
+                className="bg-white text-[var(--brand-primary)] px-8 py-3 rounded-full font-semibold hover:bg-[var(--brand-background)] transition"
               >
                 Get a Quote
               </Link>
@@ -47,7 +47,7 @@ export default function LifeInsurance() {
                 key={benefit.title}
                 className="bg-white rounded-xl shadow-lg p-6"
               >
-                <div className="w-14 h-14 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">
+                <div className="w-14 h-14 bg-[var(--brand-background)] rounded-lg mb-4 flex items-center justify-center">
                   <Image
                     src={benefit.icon}
                     alt={benefit.title}
@@ -55,8 +55,8 @@ export default function LifeInsurance() {
                     height={32}
                   />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <h3 className="text-xl font-semibold text-[var(--brand-text)] mb-2">{benefit.title}</h3>
+                <p className="text-[var(--brand-text-light)]">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -64,7 +64,7 @@ export default function LifeInsurance() {
       </section>
 
       {/* Quote Form */}
-      <section id="quote-form" className="bg-gray-50 py-20">
+      <section id="quote-form" className="bg-[var(--brand-background)] py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8">
@@ -78,7 +78,7 @@ export default function LifeInsurance() {
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-[var(--brand-primary)]"
                     placeholder="John Doe"
                   />
                 </div>
@@ -88,7 +88,7 @@ export default function LifeInsurance() {
                   </label>
                   <input
                     type="number"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-[var(--brand-primary)]"
                     placeholder="30"
                   />
                 </div>
@@ -98,7 +98,7 @@ export default function LifeInsurance() {
                   </label>
                   <input
                     type="email"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-[var(--brand-primary)]"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -108,7 +108,7 @@ export default function LifeInsurance() {
                   </label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-[var(--brand-primary)]"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -116,7 +116,7 @@ export default function LifeInsurance() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Coverage Amount
                   </label>
-                  <select className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                  <select className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-[var(--brand-primary)]">
                     <option value="">Select coverage amount</option>
                     <option value="500000">₹5 Lakhs</option>
                     <option value="1000000">₹10 Lakhs</option>
@@ -128,7 +128,7 @@ export default function LifeInsurance() {
               </div>
               <button
                 type="submit"
-                className="w-full mt-8 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                className="w-full mt-8 bg-[var(--brand-primary)] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[var(--brand-primary-dark)] transition"
               >
                 Get Quote
               </button>
@@ -156,4 +156,4 @@ const benefits = [
     description: "Enjoy tax benefits on premiums paid under Section 80C of the Income Tax Act",
     icon: "/icons/tax.svg"
   }
-]; 
+];

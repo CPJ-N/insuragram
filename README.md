@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is an online platform for comparing and purchasing insurance. It offers a variety of insurance types including life, health, motor, investment, and travel insurance, along with specialized plans such as maternity, senior citizen, and critical illness insurance. The site also provides calculators for premiums and returns, tools for policy renewal, and claim support services.
+
+## Features
+
+- **Insurance Comparisons**: Compare different insurance plans across multiple categories.
+- **Purchase Insurance**: Seamlessly purchase life, health, motor, investment, and travel insurance.
+- **Specialized Plans**: Access specialized insurance plans like maternity, senior citizen, and critical illness.
+- **Premium & Returns Calculators**: Calculate premiums and potential returns with our built-in tools.
+- **Policy Renewal Tools**: Easily renew your policies through our user-friendly interface.
+- **Claim Support Services**: Get support for filing and managing insurance claims.
 
 ## Getting Started
 

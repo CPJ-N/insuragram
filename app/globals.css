@@ -34,6 +34,15 @@
   --input: hsl(214.3, 31.8%, 91.4%);
   --ring: hsl(222.2, 84%, 4.9%);
   --radius: 0.5rem;
+
+  /* New brand colors */
+  --brand-primary: #0055FF;
+  --brand-primary-dark: #0044CC;
+  --brand-secondary: #00C2FF;
+  --brand-accent: #FF4D4D;
+  --brand-background: #F5F8FF;
+  --brand-text: #1A1A1A;
+  --brand-text-light: #666666;
 }
 
 .dark {

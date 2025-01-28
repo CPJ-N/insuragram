@@ -1,98 +1,92 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeroSection } from "@/components/hero-section";
-import { ArrowRightIcon } from "lucide-react";
+import { 
+  Heart, 
+  Activity, 
+  Car, 
+  PiggyBank, 
+  Plane, 
+  ShieldPlus,
+  ArrowRightIcon,
+  Search,
+  Calculator,
+  FileCheck,
+  LayoutDashboard
+} from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
+      
+      {/* Hero Section */}
       <HeroSection
         badge={{
-          text: "New Feature:",
+          text: "Compare & Save:",
           action: {
-            text: "Compare insurance plans instantly",
-            href: "/compare",
+          text: "Get the best insurance rates today",
+          href: "/compare",
           },
         }}
-        title="Protect What Matters Most"
-        description="Compare and buy insurance plans from top insurers at the best price"
+        title="Smart Insurance Decisions Made Simple"
+        description="Compare quotes from top insurers, calculate premiums, and manage your policies all in one place"
         actions={[
           {
-            text: "Get Started",
-            href: "/policies",
-            icon: <ArrowRightIcon className="h-4 w-4" />,
-            variant: "default",
-          },
-          {
-            text: "Learn More",
-            href: "/about",
-            variant: "outline",
-          },
+          text: "Compare Plans",
+          href: "/compare",
+          icon: <ArrowRightIcon className="h-4 w-4" />,
+          variant: "default",
+          }
         ]}
-        image={{
-          light: "/insurance-hero.svg",
-          dark: "/insurance-hero-dark.svg",
-          alt: "Insurance Protection",
-        }}
       />
-
+      
       {/* Insurance Categories */}
       <section className="py-20 bg-[var(--brand-light-gray)]">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-[var(--brand-charcoal)]">
-            Insurance Solutions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {insuranceCategories.map((category) => (
-              <div 
-                key={category.title}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border-2 border-[var(--brand-brown)] hover:border-[var(--brand-orange)]"
-              >
-                <div className="w-14 h-14 bg-[var(--brand-light-gray)] rounded-lg mb-4 flex items-center justify-center">
-                  <Image
-                    src={category.icon}
-                    alt={category.title}
-                    width={32}
-                    height={32}
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-[var(--brand-charcoal)]">{category.title}</h3>
-                <p className="text-[var(--brand-dark-brown)] mb-4">{category.description}</p>
-                <Link
-                  href={category.link}
-                  className="text-[var(--brand-orange)] font-medium hover:text-[var(--brand-brown)]"
-                >
-                  Learn More →
-                </Link>
-              </div>
-            ))}
+      <div className="container mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-12 text-[var(--brand-charcoal)]">
+        Insurance Solutions
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {insuranceCategories.map((category) => (
+          <div 
+          key={category.title}
+          className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border-2 border-[var(--brand-brown)] hover:border-[var(--brand-orange)]"
+          >
+          <div className="w-14 h-14 bg-[var(--brand-light-gray)] rounded-lg mb-4 flex items-center justify-center text-[var(--brand-orange)]">
+            {category.icon}
           </div>
+          <h3 className="text-xl font-semibold mb-2 text-[var(--brand-charcoal)]">{category.title}</h3>
+          <p className="text-[var(--brand-dark-brown)] mb-4">{category.description}</p>
+          <Link
+            href={category.link}
+            className="text-[var(--brand-orange)] font-medium hover:text-[var(--brand-brown)]"
+          >
+            Learn More →
+          </Link>
+          </div>
+        ))}
         </div>
+      </div>
       </section>
 
       {/* Features Section */}
       <section className="bg-white py-20">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-[var(--brand-charcoal)]">
-            Why Choose Us
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {features.map((feature) => (
-              <div key={feature.title} className="text-center">
-                <div className="w-16 h-16 mx-auto bg-[var(--brand-light-gray)] rounded-full flex items-center justify-center mb-4">
-                  <Image
-                    src={feature.icon}
-                    alt={feature.title}
-                    width={32}
-                    height={32}
-                  />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-[var(--brand-charcoal)]">{feature.title}</h3>
-                <p className="text-[var(--brand-dark-brown)]">{feature.description}</p>
-              </div>
-            ))}
+      <div className="container mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-12 text-[var(--brand-charcoal)]">
+        Why Choose Us
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {features.map((feature) => (
+          <div key={feature.title} className="text-center">
+          <div className="w-16 h-16 mx-auto bg-[var(--brand-light-gray)] rounded-full flex items-center justify-center mb-4 text-[var(--brand-orange)]">
+            {feature.icon}
           </div>
+          <h3 className="text-lg font-semibold mb-2 text-[var(--brand-charcoal)]">{feature.title}</h3>
+          <p className="text-[var(--brand-dark-brown)]">{feature.description}</p>
+          </div>
+        ))}
         </div>
+      </div>
       </section>
     </div>
   );
@@ -101,43 +95,61 @@ export default function Home() {
 const insuranceCategories = [
   {
     title: "Life Insurance",
-    description: "Secure your family's future with comprehensive life coverage",
-    icon: "/icons/life.svg",
+    description: "Term life, whole life, and investment-linked policies",
+    icon: <Heart className="w-8 h-8" />,
     link: "/life-insurance"
   },
   {
-    title: "Health Insurance", 
-    description: "Get the best medical coverage for you and your family",
-    icon: "/icons/health.svg",
+    title: "Health Insurance",
+    description: "Medical, critical illness, and maternity coverage",
+    icon: <Activity className="w-8 h-8" />,
     link: "/health-insurance"
   },
   {
-    title: "Car Insurance",
-    description: "Protect your vehicle with comprehensive auto insurance",
-    icon: "/icons/car.svg", 
-    link: "/car-insurance"
+    title: "Motor Insurance",
+    description: "Comprehensive coverage for cars, bikes, and commercial vehicles",
+    icon: <Car className="w-8 h-8" />,
+    link: "/motor-insurance"
+  },
+  {
+    title: "Investment Plans",
+    description: "ULIPs and retirement planning solutions",
+    icon: <PiggyBank className="w-8 h-8" />,
+    link: "/investment-plans"
+  },
+  {
+    title: "Travel Insurance",
+    description: "Domestic and international travel protection",
+    icon: <Plane className="w-8 h-8" />,
+    link: "/travel-insurance"
+  },
+  {
+    title: "Specialized Coverage",
+    description: "Senior citizen, pet, and business insurance",
+    icon: <ShieldPlus className="w-8 h-8" />,
+    link: "/specialized-plans"
   }
 ];
 
 const features = [
   {
-    title: "Best Prices",
-    description: "Compare and get insurance at the most competitive rates",
-    icon: "/icons/price.svg"
+    title: "Instant Comparisons",
+    description: "Compare plans from multiple insurers in seconds",
+    icon: <Search className="w-8 h-8" />
   },
   {
-    title: "Expert Support",
-    description: "Get assistance from our insurance experts 24/7",
-    icon: "/icons/support.svg"
+    title: "Premium Calculator",
+    description: "Get accurate premium estimates with our advanced tools",
+    icon: <Calculator className="w-8 h-8" />
   },
   {
-    title: "Fast Claims",
-    description: "Quick and hassle-free claims settlement process",
-    icon: "/icons/claims.svg"
+    title: "Easy Claims",
+    description: "Digital claim filing with real-time status tracking",
+    icon: <FileCheck className="w-8 h-8" />
   },
   {
-    title: "100% Secure",
-    description: "Your data is protected with bank-grade security",
-    icon: "/icons/security.svg"
+    title: "Policy Management",
+    description: "Manage all your policies in one dashboard",
+    icon: <LayoutDashboard className="w-8 h-8" />
   }
 ];

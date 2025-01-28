@@ -21,22 +21,22 @@ export default function RootLayout({
         <header className="bg-white shadow-sm">
           <nav className="container mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
-              <Link href="/" className="text-2xl font-bold text-blue-600">
+              <Link href="/" className="text-2xl font-bold text-[var(--brand-primary)]">
                 Insuragram
               </Link>
               <div className="hidden md:flex items-center space-x-8">
-                <Link href="/life-insurance" className="text-gray-600 hover:text-blue-600">
+                <Link href="/life-insurance" className="text-[var(--brand-text-light)] hover:text-[var(--brand-primary)]">
                   Life Insurance
                 </Link>
-                <Link href="/health-insurance" className="text-gray-600 hover:text-blue-600">
+                <Link href="/health-insurance" className="text-[var(--brand-text-light)] hover:text-[var(--brand-primary)]">
                   Health Insurance
                 </Link>
-                <Link href="/car-insurance" className="text-gray-600 hover:text-blue-600">
+                <Link href="/car-insurance" className="text-[var(--brand-text-light)] hover:text-[var(--brand-primary)]">
                   Car Insurance
                 </Link>
                 <Link 
                   href="/get-quote" 
-                  className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                  className="bg-[var(--brand-primary)] text-white px-4 py-2 rounded-full hover:bg-[var(--brand-primary-dark)]"
                 >
                   Get Quote
                 </Link>
@@ -54,7 +54,7 @@ export default function RootLayout({
                 <h3 className="text-lg font-semibold mb-4">Insurance</h3>
                 <ul className="space-y-2">
                   <li>
-                    <Link href="/life-insurance" className="text-gray-600 hover:text-blue-600">
+                    <Link href="/life-insurance" className="text-[var(--brand-text-light)] hover:text-[var(--brand-primary)]">
                       Life Insurance
                     </Link>
                   </li>
