@@ -21,10 +21,10 @@ export default function CarInsurance() {
               <span className="inline-block bg-orange-500 px-4 py-1 rounded-full text-sm mb-4 font-medium text-white">
                 Save up to 45% on your car insurance
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-black">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-brand-dark-brown">
                 Drive with Confidence and Complete Protection
               </h1>
-              <p className="text-xl mb-8 text-black">
+              <p className="text-xl mb-8 text-brand-dark-brown">
                 Comprehensive car insurance starting at{" "}
                 <span className="text-black font-bold">₹2,000/year</span>{" "}
                 with instant policy issuance
