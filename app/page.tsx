@@ -1,39 +1,40 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HeroSection } from "@/components/hero-section";
+import { ArrowRightIcon } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-[var(--brand-brown)] text-white py-20">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="md:w-1/2 mb-10 md:mb-0">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Protect What Matters Most
-              </h1>
-              <p className="text-xl mb-8">
-                Compare and buy insurance plans from top insurers at the best price
-              </p>
-              <Link 
-                href="/policies"
-                className="bg-[var(--brand-orange)] text-white px-8 py-3 rounded-full font-semibold hover:bg-[var(--brand-dark-brown)] transition"
-              >
-                Get Started
-              </Link>
-            </div>
-            <div className="md:w-1/2">
-              <Image
-                src="/insurance-hero.svg" 
-                alt="Insurance Protection"
-                width={600}
-                height={400}
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        badge={{
+          text: "New Feature:",
+          action: {
+            text: "Compare insurance plans instantly",
+            href: "/compare",
+          },
+        }}
+        title="Protect What Matters Most"
+        description="Compare and buy insurance plans from top insurers at the best price"
+        actions={[
+          {
+            text: "Get Started",
+            href: "/policies",
+            icon: <ArrowRightIcon className="h-4 w-4" />,
+            variant: "default",
+          },
+          {
+            text: "Learn More",
+            href: "/about",
+            variant: "outline",
+          },
+        ]}
+        image={{
+          light: "/insurance-hero.svg",
+          dark: "/insurance-hero-dark.svg",
+          alt: "Insurance Protection",
+        }}
+      />
 
       {/* Insurance Categories */}
       <section className="py-20 bg-[var(--brand-light-gray)]">
