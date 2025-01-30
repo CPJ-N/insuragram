@@ -1,9 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import AppHeader from "@/components/app-header" // P20e3
 
 export default function PoliciesPage() {
   return (
     <div className="container mx-auto py-10">
+      <AppHeader /> {/* P20e3 */}
       <Card>
         <CardHeader>
           <CardTitle>Policies</CardTitle>
