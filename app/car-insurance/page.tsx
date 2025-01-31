@@ -8,32 +8,33 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCircle, Clock, FileText, Zap, TagIcon, Car, Search, FileCheck } from "lucide-react";
+import { Header } from "@/components/layout/Header";
 
 export default function CarInsurance() {
   return (
     <div className="min-h-screen">
+      <Header />
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary to-primary/80 text-white py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-[var(--brand-brown)] to-[var(--brand-dark-brown)] text-white py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         <div className="container mx-auto px-6 relative">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-10 md:mb-0">
-              <span className="inline-block bg-orange-500 px-4 py-1 rounded-full text-sm mb-4 font-medium text-white">
+              <span className="inline-block bg-[var(--brand-orange)] px-4 py-1 rounded-full text-sm mb-4 font-medium text-white">
                 Save up to 45% on your car insurance
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-brand-dark-brown">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                 Drive with Confidence and Complete Protection
               </h1>
-              <p className="text-xl mb-8 text-brand-dark-brown">
+              <p className="text-xl mb-8 text-[var(--brand-light-gray)]">
                 Comprehensive car insurance starting at{" "}
-                <span className="text-black font-bold">₹2,000/year</span>{" "}
+                <span className="text-white font-bold">₹2,000/year</span>{" "}
                 with instant policy issuance
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
-                  variant="secondary" 
-                  className="w-full sm:w-auto bg-orange-500 text-white"
+                  className="w-full sm:w-auto bg-[var(--brand-orange)] hover:bg-[var(--brand-orange)]/90 text-white"
                   asChild
                 >
                   <Link href="#quote-form">Get a Quote</Link>
@@ -41,7 +42,7 @@ export default function CarInsurance() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto border-white hover:bg-blue/20 text-white bg-orange-500"
+                  className="w-full sm:w-auto border-white hover:bg-white/20 text-white"
                   asChild
                 >
                   <Link href="#coverage">View Coverage</Link>
@@ -56,25 +57,25 @@ export default function CarInsurance() {
                 width={600}
                 height={480}
                 priority
-                className="relative animate-float"
+                className="relative animate-float drop-shadow-xl"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Benefits Section - Enhanced with more benefits */}
-      <section className="py-12 bg-muted/50">
+      {/* Quick Benefits Section */}
+      <section className="py-12 bg-[var(--brand-light-gray)]/10">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {quickBenefits.map((benefit) => (
               <div key={benefit.title} className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <benefit.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-[var(--brand-orange)]/10 flex items-center justify-center">
+                  <benefit.icon className="w-6 h-6 text-[var(--brand-orange)]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">{benefit.title}</h3>
-                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                  <h3 className="font-semibold text-[var(--brand-charcoal)]">{benefit.title}</h3>
+                  <p className="text-sm text-[var(--brand-charcoal)]/70">{benefit.description}</p>
                 </div>
               </div>
             ))}
@@ -82,26 +83,29 @@ export default function CarInsurance() {
         </div>
       </section>
 
-      {/* Added: Insurance Process Section */}
+      {/* Insurance Process Section */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4 text-[var(--brand-charcoal)]">How It Works</h2>
+          <p className="text-center text-[var(--brand-charcoal)]/70 mb-12 max-w-2xl mx-auto">
             Get your car insured in three simple steps
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {process.map((step, index) => (
-              <Card key={step.title} className="relative">
+              <Card 
+                key={step.title} 
+                className="relative transition-all duration-300 hover:shadow-lg hover:border-[var(--brand-orange)]"
+              >
                 <CardContent className="pt-6">
-                  <div className="absolute top-4 right-4 text-4xl font-bold text-primary/10">
+                  <div className="absolute top-4 right-4 text-4xl font-bold text-[var(--brand-orange)]/10">
                     {index + 1}
                   </div>
-                  <div className="w-14 h-14 bg-primary/10 rounded-lg mb-4 flex items-center justify-center">
-                    <step.icon className="w-6 h-6 text-primary" />
+                  <div className="w-14 h-14 bg-[var(--brand-orange)]/10 rounded-lg mb-4 flex items-center justify-center">
+                    <step.icon className="w-6 h-6 text-[var(--brand-orange)]" />
                   </div>
                   <CardHeader className="p-0">
-                    <CardTitle className="text-xl mb-2">{step.title}</CardTitle>
-                    <CardDescription>{step.description}</CardDescription>
+                    <CardTitle className="text-xl mb-2 text-[var(--brand-charcoal)]">{step.title}</CardTitle>
+                    <CardDescription className="text-[var(--brand-charcoal)]/70">{step.description}</CardDescription>
                   </CardHeader>
                 </CardContent>
               </Card>
@@ -110,10 +114,10 @@ export default function CarInsurance() {
         </div>
       </section>
 
-      {/* Coverage Types - Enhanced with Tabs */}
-      <section id="coverage" className="py-20">
+      {/* Coverage Types */}
+      <section id="coverage" className="py-20 bg-[var(--brand-light-gray)]/10">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">Choose Your Coverage</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-[var(--brand-charcoal)]">Choose Your Coverage</h2>
           <Tabs defaultValue="comprehensive" className="w-full">
             <TabsList className="grid w-full grid-cols-2 max-w-[400px] mx-auto mb-8">
               <TabsTrigger value="comprehensive">Comprehensive</TabsTrigger>
@@ -123,13 +127,16 @@ export default function CarInsurance() {
               <TabsContent key={key} value={key}>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {coverage.features.map((feature, index) => (
-                    <Card key={index}>
+                    <Card 
+                      key={index}
+                      className="transition-all duration-300 hover:shadow-lg hover:border-[var(--brand-orange)]"
+                    >
                       <CardContent className="pt-6">
-                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                          <CheckCircle className="w-6 h-6 text-primary" />
+                        <div className="w-12 h-12 rounded-full bg-[var(--brand-orange)]/10 flex items-center justify-center mb-4">
+                          <CheckCircle className="w-6 h-6 text-[var(--brand-orange)]" />
                         </div>
-                        <h3 className="font-semibold mb-2">{feature.title}</h3>
-                        <p className="text-sm text-muted-foreground">{feature.description}</p>
+                        <h3 className="font-semibold mb-2 text-[var(--brand-charcoal)]">{feature.title}</h3>
+                        <p className="text-sm text-[var(--brand-charcoal)]/70">{feature.description}</p>
                       </CardContent>
                     </Card>
                   ))}
@@ -140,20 +147,20 @@ export default function CarInsurance() {
         </div>
       </section>
 
-      {/* Added: Premium Calculator Section */}
-      <section className="py-20 bg-primary/5">
+      {/* Premium Calculator Section */}
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-4">Car Insurance Premium Calculator</h2>
-            <p className="text-center text-muted-foreground mb-12">
+            <h2 className="text-3xl font-bold text-center mb-4 text-[var(--brand-charcoal)]">Car Insurance Premium Calculator</h2>
+            <p className="text-center text-[var(--brand-charcoal)]/70 mb-12">
               Get an instant estimate of your car insurance premium
             </p>
-            <Card>
+            <Card className="transition-all duration-300 hover:shadow-lg">
               <CardContent className="pt-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {calculatorFields.map((field) => (
                     <div key={field.name} className="space-y-2">
-                      <Label htmlFor={field.name}>{field.label}</Label>
+                      <Label htmlFor={field.name} className="text-[var(--brand-charcoal)]">{field.label}</Label>
                       {field.type === 'select' ? (
                         <Select>
                           <SelectTrigger>
@@ -173,7 +180,9 @@ export default function CarInsurance() {
                     </div>
                   ))}
                 </div>
-                <Button className="w-full mt-6">Calculate Premium</Button>
+                <Button className="w-full mt-6 bg-[var(--brand-orange)] hover:bg-[var(--brand-orange)]/90 text-white">
+                  Calculate Premium
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -181,17 +190,19 @@ export default function CarInsurance() {
       </section>
 
       {/* Quote Form */}
-      <section id="quote-form" className="bg-muted py-20">
+      <section id="quote-form" className="bg-[var(--brand-light-gray)]/10 py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
-            <Card>
+            <Card className="transition-all duration-300 hover:shadow-lg">
               <CardHeader>
-                <CardTitle className="text-3xl text-center">Get Your Car Insurance Quote</CardTitle>
+                <CardTitle className="text-3xl text-center text-[var(--brand-charcoal)]">
+                  Get Your Car Insurance Quote
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="carMake">Car Make</Label>
+                    <Label htmlFor="carMake" className="text-[var(--brand-charcoal)]">Car Make</Label>
                     <Select>
                       <SelectTrigger>
                         <SelectValue placeholder="Select car make" />
@@ -206,32 +217,37 @@ export default function CarInsurance() {
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="model">Model Year</Label>
+                    <Label htmlFor="model" className="text-[var(--brand-charcoal)]">Model Year</Label>
                     <Input id="model" type="number" placeholder="2023" />
                   </div>
                   <div className="md:col-span-2 space-y-2">
-                    <Label>Coverage Type</Label>
+                    <Label className="text-[var(--brand-charcoal)]">Coverage Type</Label>
                     <RadioGroup defaultValue="comprehensive" className="grid grid-cols-2 gap-4">
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="comprehensive" id="comprehensive" />
-                        <Label htmlFor="comprehensive">Comprehensive</Label>
+                        <Label htmlFor="comprehensive" className="text-[var(--brand-charcoal)]">Comprehensive</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="third-party" id="third-party" />
-                        <Label htmlFor="third-party">Third Party</Label>
+                        <Label htmlFor="third-party" className="text-[var(--brand-charcoal)]">Third Party</Label>
                       </div>
                     </RadioGroup>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="text-[var(--brand-charcoal)]">Email</Label>
                     <Input id="email" type="email" placeholder="john@example.com" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone</Label>
+                    <Label htmlFor="phone" className="text-[var(--brand-charcoal)]">Phone</Label>
                     <Input id="phone" type="tel" placeholder="+91 98765 43210" />
                   </div>
                   <div className="md:col-span-2">
-                    <Button type="submit" className="w-full">Get Quote</Button>
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange)]/90 text-white"
+                    >
+                      Get Quote
+                    </Button>
                   </div>
                 </form>
               </CardContent>
@@ -240,11 +256,11 @@ export default function CarInsurance() {
         </div>
       </section>
 
-      {/* Added: FAQ Section */}
+      {/* FAQ Section */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <h2 className="text-3xl font-bold text-center mb-4 text-[var(--brand-charcoal)]">Frequently Asked Questions</h2>
+          <p className="text-center text-[var(--brand-charcoal)]/70 mb-12">
             Everything you need to know about car insurance
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -261,18 +277,18 @@ export default function CarInsurance() {
       </section>
 
       {/* Features Section - Enhanced with better visual design */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-[var(--brand-light-gray)]/10">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4">Why Choose Us</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4 text-[var(--brand-charcoal)]">Why Choose Us</h2>
+          <p className="text-center text-[var(--brand-charcoal)]/70 mb-12 max-w-2xl mx-auto">
             We offer the best car insurance experience with quick claims, extensive network, and round-the-clock support
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature) => (
               <Card key={feature.title} className="relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--brand-orange)]/5 rounded-full -mr-16 -mt-16" />
                 <CardContent className="pt-6 relative">
-                  <div className="w-14 h-14 bg-primary/10 rounded-lg mb-4 flex items-center justify-center">
+                  <div className="w-14 h-14 bg-[var(--brand-orange)]/10 rounded-lg mb-4 flex items-center justify-center">
                     <Image
                       src={feature.icon}
                       alt={feature.title}
@@ -281,8 +297,8 @@ export default function CarInsurance() {
                     />
                   </div>
                   <CardHeader className="p-0">
-                    <CardTitle className="text-xl mb-2">{feature.title}</CardTitle>
-                    <CardDescription>{feature.description}</CardDescription>
+                    <CardTitle className="text-xl mb-2 text-[var(--brand-charcoal)]">{feature.title}</CardTitle>
+                    <CardDescription className="text-[var(--brand-charcoal)]/70">{feature.description}</CardDescription>
                   </CardHeader>
                 </CardContent>
               </Card>

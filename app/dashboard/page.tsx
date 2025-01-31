@@ -1,11 +1,16 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+"use client"
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Overview } from "@/components/dashboard/overview"
 import { RecentActivity } from "@/components/dashboard/recent-activity"
+import { PolicyManagement } from "@/components/insurance/policy-management"
+import { ClaimsManagement } from "@/components/insurance/claims-management"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Shield, Activity, FileText, DollarSign } from "lucide-react"
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-6">
       <h1 className="text-3xl font-bold">Dashboard</h1>
       
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -59,24 +64,39 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-        <Card className="col-span-4">
-          <CardHeader>
-            <CardTitle>Premium Overview</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Overview />
-          </CardContent>
-        </Card>
-        <Card className="col-span-3">
-          <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <RecentActivity />
-          </CardContent>
-        </Card>
-      </div>
+      <Tabs defaultValue="overview" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="policies">Policies</TabsTrigger>
+          <TabsTrigger value="claims">Claims</TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview" className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+            <Card className="col-span-4">
+              <CardHeader>
+                <CardTitle>Premium Overview</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Overview />
+              </CardContent>
+            </Card>
+            <Card className="col-span-3">
+              <CardHeader>
+                <CardTitle>Recent Activity</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <RecentActivity />
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+        <TabsContent value="policies">
+          <PolicyManagement />
+        </TabsContent>
+        <TabsContent value="claims">
+          <ClaimsManagement />
+        </TabsContent>
+      </Tabs>
     </div>
   )
 }
