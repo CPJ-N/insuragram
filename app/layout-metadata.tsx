@@ -1,16 +1,16 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { metadata } from "./metadata";
-import ClientLayout from "./layout-client";
+import RootLayout from "./layout-client";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export { metadata };
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <ClientLayout>{children}</ClientLayout>;
-}
+  return <RootLayout>{children}</RootLayout>;
+} 
