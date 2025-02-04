@@ -1,21 +1,24 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { AppHeader } from "@/components/app-header"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+"use client";
+
+import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
+import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <AppHeader />
-        <main className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          {children}
-        </main>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+    <div className="min-h-screen">
+      <div className="flex">
+        <DashboardSidebar className="w-64 flex-none" />
+        <div className="flex-1">
+          <DashboardHeader />
+          <main className="flex-1 p-8 space-y-8 overflow-y-auto max-h-[calc(100vh-4rem)]">
+            {children}
+          </main>
+        </div>
+      </div>
+    </div>
+  );
 } 
