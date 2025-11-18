@@ -5,9 +5,13 @@ This is an online platform for comparing and purchasing insurance. It offers a v
 - **Insurance Comparisons**: Compare different insurance plans across multiple categories.
 - **Purchase Insurance**: Seamlessly purchase life, health, motor, investment, and travel insurance.
 - **Specialized Plans**: Access specialized insurance plans like maternity, senior citizen, and critical illness.
-- **Premium & Returns Calculators**: Calculate premiums and potential returns with our built-in tools.
+- **Premium & Returns Calculators**: Calculate premiums and potential returns with our built-in tools with loading states.
 - **Policy Renewal Tools**: Easily renew your policies through our user-friendly interface.
 - **Claim Support Services**: Get support for filing and managing insurance claims.
+- **Customer Testimonials**: Real customer reviews with star ratings.
+- **Trust Badges**: Display of customer ratings, support availability, and certifications.
+- **Fully Accessible**: WCAG 2.1 AA compliant with keyboard navigation and screen reader support.
+- **Mobile Responsive**: Optimized for all screen sizes and devices.
 
 ## Getting Started
 
