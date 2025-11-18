@@ -23,8 +23,8 @@ export function FileUploader({
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || [])
-    let validFiles: File[] = []
-    let errors: string[] = []
+    const validFiles: File[] = []
+    const errors: string[] = []
 
     files.forEach((file) => {
       // Check file type

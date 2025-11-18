@@ -1,12 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRightIcon } from "lucide-react";
-import { Mockup, MockupFrame } from "@/components/ui/mockup";
-import { Glow } from "@/components/ui/glow";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 interface HeroAction {
@@ -38,11 +34,7 @@ export function HeroSection({
   badge,
   title,
   description,
-  image,
 }: HeroProps) {
-  const { resolvedTheme } = useTheme();
-  const imageSrc = image && resolvedTheme === "light" ? image.light : image?.dark;
-
   return (
     <section
       className={cn(

@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, Plus, MoreHorizontal, Phone, Mail, Calendar, Tag, FileText } from "lucide-react";
+import { Search, Plus, MoreHorizontal, Phone, Calendar, Tag, FileText } from "lucide-react";
 
 interface Customer {
   id: string;
@@ -23,7 +23,7 @@ interface Customer {
 }
 
 export default function CRMPage() {
-  const [customers, setCustomers] = useState<Customer[]>([
+  const [customers] = useState<Customer[]>([
     {
       id: "1",
       name: "John Doe",

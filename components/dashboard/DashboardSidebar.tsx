@@ -4,18 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { 
-  LayoutDashboard, 
-  Users, 
-  FileText, 
-  Shield, 
+import {
+  LayoutDashboard,
+  Users,
+  FileText,
+  Shield,
   Settings,
   ClipboardList,
   FileCheck
 } from "lucide-react";
 
-interface SidebarNavProps extends React.HTMLAttributes<HTMLDivElement> {}
+type SidebarNavProps = React.HTMLAttributes<HTMLDivElement>
 
 export function DashboardSidebar({ className }: SidebarNavProps) {
   const pathname = usePathname();
