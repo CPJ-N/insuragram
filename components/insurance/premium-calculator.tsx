@@ -1,4 +1,6 @@
-import { useState } from "react"
+"use client"
+
+import { useState, useEffect, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -21,12 +23,27 @@ export function PremiumCalculator({ type }: PremiumCalculatorProps) {
 
   const [premium, setPremium] = useState<number | null>(null)
   const [isCalculating, setIsCalculating] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
 
   const calculatePremium = () => {
     setIsCalculating(true)
 
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
     // Simulate API call delay for realistic loading state
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       // This is a simplified premium calculation
       // In a real application, this would be more complex and based on actuarial tables
       let basePremium = parseInt(formData.coverage.toString()) * 0.001
@@ -52,6 +69,7 @@ export function PremiumCalculator({ type }: PremiumCalculatorProps) {
 
       setPremium(Math.round(basePremium))
       setIsCalculating(false)
+      timeoutRef.current = null
     }, 1000)
   }
 
