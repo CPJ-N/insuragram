@@ -17,7 +17,7 @@ export default function LifeInsurance() {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-10 md:mb-0">
               <h1 className="text-4xl font-bold mb-6">
-                Protect Your Family's Future
+                Protect Your Family&apos;s Future
               </h1>
               <p className="text-xl mb-8 text-[var(--brand-light-gray)]">
                 Get comprehensive life insurance coverage starting at ₹500/month

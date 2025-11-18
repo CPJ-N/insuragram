@@ -310,29 +310,6 @@ export default function CarInsurance() {
   );
 }
 
-const coverageTypes = [
-  {
-    title: "Comprehensive Coverage",
-    features: [
-      "Damage to your own vehicle",
-      "Third-party liability",
-      "Personal accident cover",
-      "Natural disaster protection",
-      "Theft coverage"
-    ]
-  },
-  {
-    title: "Third Party Coverage",
-    features: [
-      "Mandatory legal requirement",
-      "Covers third-party injuries",
-      "Property damage protection",
-      "Legal liability coverage",
-      "No own damage coverage"
-    ]
-  }
-];
-
 const features = [
   {
     title: "Quick Claims",

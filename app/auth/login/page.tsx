@@ -33,7 +33,7 @@ export default function LoginPage() {
         <CardFooter className="flex flex-col space-y-4">
           <Button className="w-full">Login</Button>
           <div className="text-sm text-center text-muted-foreground">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/auth/register" className="text-primary hover:underline">
               Register
             </Link>
