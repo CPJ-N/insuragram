@@ -76,11 +76,40 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Global focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-[var(--brand-orange)];
+  }
+
+  /* Improve button and link focus */
+  button:focus-visible,
+  a:focus-visible {
+    @apply ring-2 ring-[var(--brand-orange)] ring-offset-2 rounded-md;
+  }
 }
 
 @layer utilities {
   .fade-bottom {
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  }
+
+  /* Screen reader only - for accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Focus visible for keyboard navigation */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-[var(--brand-orange)] focus:ring-offset-2 rounded-md;
   }
 }
 

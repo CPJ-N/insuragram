@@ -10,7 +10,18 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <>
+      {/* Skip to main content link for keyboard users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--brand-orange)] focus:text-white focus:rounded-md"
+      >
+        Skip to main content
+      </a>
+      <header
+        className="fixed top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+        role="banner"
+      >
       <div className="max-w-[1400px] mx-auto px-6 flex h-20 items-center justify-between">
         <div className="flex items-center gap-12">
           <Link href="/" className="flex items-center space-x-2 relative">
@@ -29,7 +40,7 @@ export function Header() {
               transition={{ duration: 0.5, delay: 0.2 }}
             />
           </Link>
-          <nav className="hidden lg:flex gap-8">
+          <nav className="hidden lg:flex gap-8" aria-label="Main navigation">
             {[
               { href: "/car-insurance", label: "Car Insurance" },
               { href: "/health-insurance", label: "Health Insurance" },
@@ -76,13 +87,16 @@ export function Header() {
               </Button>
             </motion.div>
           </div>
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             size="icon"
             className="lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-6 w-6" aria-hidden="true" />
           </Button>
         </div>
       </div>
@@ -91,13 +105,16 @@ export function Header() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden border-t bg-white"
+            role="dialog"
+            aria-label="Mobile navigation menu"
           >
             <div className="max-w-[1400px] mx-auto px-6 py-4 space-y-4">
-              <nav className="flex flex-col gap-2">
+              <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
                 {[
                   { href: "/car-insurance", label: "Car Insurance" },
                   { href: "/health-insurance", label: "Health Insurance" },
@@ -132,6 +149,7 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+      </header>
+    </>
   );
 } 
