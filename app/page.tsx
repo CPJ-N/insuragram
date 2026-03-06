@@ -60,7 +60,7 @@ export default function Home() {
             >
               <Sparkles className="w-4 h-4 text-[var(--brand-orange)]" />
               <span className="text-sm font-medium text-[var(--brand-orange)]">
-                Powered by Claude AI
+                AI-Powered Insurance Platform
               </span>
             </motion.div>
 
