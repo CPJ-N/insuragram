@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} font-sans`}>
         {!isDashboard && <Header />}
-        <main className={isDashboard ? "" : "pt-20"}>{children}</main>
+        <main className={isDashboard ? "" : "pt-16"}>{children}</main>
         {!isDashboard && <Footer />}
       </body>
     </html>
