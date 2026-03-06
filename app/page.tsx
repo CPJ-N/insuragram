@@ -60,7 +60,7 @@ export default function Home() {
             >
               <Sparkles className="w-4 h-4 text-[var(--brand-orange)]" />
               <span className="text-sm font-medium text-[var(--brand-orange)]">
-                AI-Powered Insurance Platform
+                AI-Native Insurance Platform
               </span>
             </motion.div>
 
@@ -80,7 +80,7 @@ export default function Home() {
               className="text-lg md:text-xl text-[var(--brand-charcoal)]/60 mb-10 max-w-2xl mx-auto leading-relaxed"
               variants={fadeIn}
             >
-              AI translates your policy into plain English, files claims from photos, and finds coverage gaps — so you never overpay or get caught off guard.
+              Every policy translation, every claim, every coverage check — built on AI from the ground up. Not bolted on. Native.
             </motion.p>
 
             <motion.div
@@ -195,7 +195,7 @@ export default function Home() {
         >
           <motion.div className="text-center mb-16" variants={fadeIn}>
             <p className="text-sm font-semibold text-[var(--brand-orange)] uppercase tracking-wider mb-3">
-              AI-Powered Tools
+              Built on AI
             </p>
             <h2
               id="features-heading"
@@ -204,7 +204,7 @@ export default function Home() {
               Your insurance, decoded
             </h2>
             <p className="text-lg text-[var(--brand-charcoal)]/60 max-w-2xl mx-auto">
-              Three AI tools that turn complex insurance into something you actually understand.
+              AI isn&apos;t a feature we added — it&apos;s the foundation everything runs on.
             </p>
           </motion.div>
 
@@ -286,9 +286,9 @@ export default function Home() {
               variants={fadeIn}
             >
               <Shield className="w-8 h-8 text-[var(--brand-orange)] mb-4" />
-              <h3 className="font-semibold text-[var(--brand-charcoal)] mb-2">24/7 AI Support</h3>
+              <h3 className="font-semibold text-[var(--brand-charcoal)] mb-2">Always-On Intelligence</h3>
               <p className="text-sm text-[var(--brand-charcoal)]/60">
-                Get answers about your coverage, claims status, or policy questions any time.
+                Coverage questions, claims status, policy lookups — AI handles it all, any time.
               </p>
             </motion.div>
           </div>
@@ -530,7 +530,7 @@ const steps = [
   {
     title: "AI analyzes it",
     description:
-      "Claude reads every clause, identifies what matters, and flags what's missing.",
+      "AI reads every clause, identifies what matters, and flags what's missing.",
   },
   {
     title: "Get plain answers",
