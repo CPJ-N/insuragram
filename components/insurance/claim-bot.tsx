@@ -64,10 +64,66 @@ export function ClaimBot() {
     setUploadedFiles(files)
   }
 
-  const handleAnalyze = () => {
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        const result = reader.result as string
+        // Remove the data:image/...;base64, prefix
+        const base64 = result.split(",")[1]
+        resolve(base64)
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(file)
+    })
+  }
+
+  const handleAnalyze = async () => {
     if (uploadedFiles.length === 0) return
     setIsAnalyzing(true)
-    setTimeout(() => {
+
+    try {
+      const images = await Promise.all(
+        uploadedFiles.map(async (file) => {
+          const data = await fileToBase64(file)
+          const mediaType = file.type || "image/jpeg"
+          return { data, mediaType }
+        })
+      )
+
+      const response = await fetch("/api/ai/analyze-claim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ images }),
+      })
+
+      let analysis: Omit<GeneratedClaim, "policyNumber" | "incidentDate" | "status">
+
+      if (!response.ok) {
+        // Fallback to sample data
+        analysis = sampleAnalysis
+      } else {
+        analysis = await response.json()
+      }
+
+      const claim: GeneratedClaim = {
+        ...analysis,
+        policyNumber: "",
+        incidentDate: new Date().toISOString().split("T")[0],
+        status: "draft",
+      }
+
+      setGeneratedClaim(claim)
+      setClaimDetails({
+        policyNumber: claim.policyNumber,
+        claimType: claim.claimType,
+        incidentDate: claim.incidentDate,
+        location: "",
+        additionalNotes: "",
+      })
+      setStep("details")
+    } catch {
+      // Fallback to sample on network error
       setGeneratedClaim(sampleAnalysis)
       setClaimDetails({
         policyNumber: sampleAnalysis.policyNumber,
@@ -76,9 +132,10 @@ export function ClaimBot() {
         location: "",
         additionalNotes: "",
       })
-      setIsAnalyzing(false)
       setStep("details")
-    }, 3000)
+    } finally {
+      setIsAnalyzing(false)
+    }
   }
 
   const handleSubmitClaim = () => {

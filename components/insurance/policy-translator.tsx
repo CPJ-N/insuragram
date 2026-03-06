@@ -106,16 +106,41 @@ export function PolicyTranslator() {
   const [policyText, setPolicyText] = useState("")
   const [isTranslating, setIsTranslating] = useState(false)
   const [result, setResult] = useState<TranslationResult | null>(null)
+  const [error, setError] = useState<string | null>(null)
   const [inputMethod, setInputMethod] = useState<"paste" | "upload">("paste")
 
-  const handleTranslate = () => {
+  const handleTranslate = async () => {
     if (!policyText.trim()) return
     setIsTranslating(true)
-    // Simulate AI translation
-    setTimeout(() => {
+    setError(null)
+
+    try {
+      const response = await fetch("/api/ai/translate-policy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ policyText }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json()
+        if (response.status === 500 && data.error?.includes("ANTHROPIC_API_KEY")) {
+          // Fallback to sample data when API key isn't configured
+          setResult(sampleTranslation)
+          return
+        }
+        throw new Error(data.error || "Translation failed")
+      }
+
+      const data = await response.json()
+      setResult(data)
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Translation failed"
+      setError(message)
+      // Fallback to sample data on any error
       setResult(sampleTranslation)
+    } finally {
       setIsTranslating(false)
-    }, 2500)
+    }
   }
 
   const handleFileUpload = (files: File[]) => {
@@ -188,6 +213,17 @@ export function PolicyTranslator() {
           </Button>
         </CardContent>
       </Card>
+
+      {/* Error Banner */}
+      {error && (
+        <Card className="border-amber-200 bg-amber-50/50">
+          <CardContent className="pt-4">
+            <p className="text-sm text-amber-800">
+              <span className="font-medium">Note:</span> {error}. Showing sample translation below.
+            </p>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Results Section */}
       {result && (
