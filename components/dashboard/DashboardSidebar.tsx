@@ -11,7 +11,9 @@ import {
   Shield,
   Settings,
   ClipboardList,
-  FileCheck
+  FileCheck,
+  BookOpen,
+  Camera,
 } from "lucide-react";
 
 type SidebarNavProps = React.HTMLAttributes<HTMLDivElement>
@@ -43,6 +45,18 @@ export function DashboardSidebar({ className }: SidebarNavProps) {
       icon: FileCheck,
       href: "/dashboard/policies",
       color: "text-orange-500",
+    },
+    {
+      label: "PolicyPlain",
+      icon: BookOpen,
+      href: "/dashboard/policy-translator",
+      color: "text-teal-500",
+    },
+    {
+      label: "ClaimBot",
+      icon: Camera,
+      href: "/dashboard/claim-bot",
+      color: "text-rose-500",
     },
     {
       label: "Documents",
