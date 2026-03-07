@@ -14,6 +14,10 @@ import {
   FileCheck,
   BookOpen,
   Camera,
+  MessageCircle,
+  Mail,
+  Brain,
+  Zap,
 } from "lucide-react";
 
 type SidebarNavProps = React.HTMLAttributes<HTMLDivElement>
@@ -59,6 +63,30 @@ export function DashboardSidebar({ className }: SidebarNavProps) {
       color: "text-rose-500",
     },
     {
+      label: "InsuraBot",
+      icon: MessageCircle,
+      href: "/dashboard/chatbot",
+      color: "text-blue-500",
+    },
+    {
+      label: "Communications",
+      icon: Mail,
+      href: "/dashboard/communications",
+      color: "text-indigo-500",
+    },
+    {
+      label: "Underwriting",
+      icon: Brain,
+      href: "/dashboard/underwriting",
+      color: "text-purple-500",
+    },
+    {
+      label: "AI Coverage",
+      icon: Zap,
+      href: "/dashboard/ai-coverage",
+      color: "text-amber-500",
+    },
+    {
       label: "Documents",
       icon: FileText,
       href: "/dashboard/documents",
@@ -68,7 +96,7 @@ export function DashboardSidebar({ className }: SidebarNavProps) {
       label: "Insurance",
       icon: Shield,
       href: "/dashboard/insurance",
-      color: "text-blue-500",
+      color: "text-cyan-500",
     },
     {
       label: "Settings",
