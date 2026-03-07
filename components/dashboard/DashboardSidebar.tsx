@@ -6,18 +6,11 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   LayoutDashboard,
-  Users,
-  FileText,
-  Shield,
-  Settings,
+  Bot,
   ClipboardList,
   FileCheck,
-  BookOpen,
-  Camera,
-  MessageCircle,
-  Mail,
-  Brain,
   Zap,
+  Settings,
 } from "lucide-react";
 
 type SidebarNavProps = React.HTMLAttributes<HTMLDivElement>
@@ -27,16 +20,17 @@ export function DashboardSidebar({ className }: SidebarNavProps) {
 
   const routes = [
     {
-      label: "Overview",
+      label: "Dashboard",
       icon: LayoutDashboard,
       href: "/dashboard",
       color: "text-sky-500",
     },
     {
-      label: "Customers",
-      icon: Users,
-      href: "/dashboard/crm",
-      color: "text-violet-500",
+      label: "Agent",
+      icon: Bot,
+      href: "/dashboard/agent",
+      color: "text-blue-600",
+      badge: "AI",
     },
     {
       label: "Claims",
@@ -51,52 +45,10 @@ export function DashboardSidebar({ className }: SidebarNavProps) {
       color: "text-orange-500",
     },
     {
-      label: "PolicyPlain",
-      icon: BookOpen,
-      href: "/dashboard/policy-translator",
-      color: "text-teal-500",
-    },
-    {
-      label: "ClaimBot",
-      icon: Camera,
-      href: "/dashboard/claim-bot",
-      color: "text-rose-500",
-    },
-    {
-      label: "InsuraBot",
-      icon: MessageCircle,
-      href: "/dashboard/chatbot",
-      color: "text-blue-500",
-    },
-    {
-      label: "Communications",
-      icon: Mail,
-      href: "/dashboard/communications",
-      color: "text-indigo-500",
-    },
-    {
-      label: "Underwriting",
-      icon: Brain,
-      href: "/dashboard/underwriting",
-      color: "text-purple-500",
-    },
-    {
-      label: "AI Coverage",
+      label: "Products",
       icon: Zap,
       href: "/dashboard/ai-coverage",
       color: "text-amber-500",
-    },
-    {
-      label: "Documents",
-      icon: FileText,
-      href: "/dashboard/documents",
-      color: "text-emerald-500",
-    },
-    {
-      label: "Insurance",
-      icon: Shield,
-      href: "/dashboard/insurance",
-      color: "text-cyan-500",
     },
     {
       label: "Settings",
@@ -127,6 +79,11 @@ export function DashboardSidebar({ className }: SidebarNavProps) {
                 <Link href={route.href}>
                   <route.icon className={cn("mr-2 h-4 w-4", route.color)} />
                   {route.label}
+                  {"badge" in route && route.badge && (
+                    <span className="ml-auto text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full font-medium">
+                      {route.badge}
+                    </span>
+                  )}
                 </Link>
               </Button>
             ))}
@@ -135,4 +92,4 @@ export function DashboardSidebar({ className }: SidebarNavProps) {
       </div>
     </div>
   );
-} 
+}
