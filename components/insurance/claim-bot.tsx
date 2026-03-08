@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { FileUploader } from "@/components/ui/file-uploader"
 import { Camera, CheckCircle, FileText, Loader2, Sparkles, AlertCircle } from "lucide-react"
+import { ClaimsPipeline } from "./claims-pipeline"
 
 interface GeneratedClaim {
   claimType: string
@@ -48,7 +49,7 @@ const sampleAnalysis: GeneratedClaim = {
 }
 
 export function ClaimBot() {
-  const [step, setStep] = useState<"upload" | "details" | "review">("upload")
+  const [step, setStep] = useState<"upload" | "details" | "processing">("upload")
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [generatedClaim, setGeneratedClaim] = useState<GeneratedClaim | null>(null)
@@ -141,7 +142,7 @@ export function ClaimBot() {
   const handleSubmitClaim = () => {
     if (generatedClaim) {
       setGeneratedClaim({ ...generatedClaim, status: "submitted" })
-      setStep("review")
+      setStep("processing")
     }
   }
 
@@ -353,61 +354,18 @@ export function ClaimBot() {
         </>
       )}
 
-      {/* Step 3: Confirmation */}
-      {step === "review" && generatedClaim && (
-        <Card className="border-green-200 bg-green-50/50">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-green-800">
-              <CheckCircle className="h-6 w-6" />
-              Claim Submitted Successfully
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <p className="text-muted-foreground">Claim ID</p>
-                <p className="font-medium">CLM-{Math.random().toString(36).substr(2, 8).toUpperCase()}</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Policy Number</p>
-                <p className="font-medium">{claimDetails.policyNumber}</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Claim Type</p>
-                <p className="font-medium">{claimDetails.claimType}</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Estimated Damage</p>
-                <p className="font-medium">{generatedClaim.estimatedDamage}</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Incident Date</p>
-                <p className="font-medium">{claimDetails.incidentDate}</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Status</p>
-                <Badge className="bg-green-100 text-green-800">Submitted - Under Review</Badge>
-              </div>
-            </div>
-
-            <p className="text-sm text-green-700">
-              Your claim has been submitted and is being reviewed. You&apos;ll receive updates via email. Typical processing time is 3-5 business days.
-            </p>
-
-            <Button
-              variant="outline"
-              onClick={() => {
-                setStep("upload")
-                setGeneratedClaim(null)
-                setUploadedFiles([])
-                setClaimDetails({ policyNumber: "", claimType: "", incidentDate: "", location: "", additionalNotes: "" })
-              }}
-              className="w-full"
-            >
-              File Another Claim
-            </Button>
-          </CardContent>
-        </Card>
+      {/* Step 3: AI Claims Processing Pipeline */}
+      {step === "processing" && generatedClaim && (
+        <ClaimsPipeline
+          claim={generatedClaim}
+          claimDetails={claimDetails}
+          onReset={() => {
+            setStep("upload")
+            setGeneratedClaim(null)
+            setUploadedFiles([])
+            setClaimDetails({ policyNumber: "", claimType: "", incidentDate: "", location: "", additionalNotes: "" })
+          }}
+        />
       )}
     </div>
   )
